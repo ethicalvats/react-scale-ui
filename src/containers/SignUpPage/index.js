@@ -1,20 +1,14 @@
-/**
- * NotFoundPage
- *
- * This is the page we show when the user visits a url that doesn't have a route
- */
-
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import { Helmet } from "react-helmet";
 import H1 from "../../components/H1";
 
-export default function NotFound() {
+export default function SignUpPage() {
   return (
     <article>
       <Helmet>
-        <title>404</title> 
+        <title>Signup</title> 
       </Helmet>
       <H1>
         <FormattedMessage {...messages.header} />
