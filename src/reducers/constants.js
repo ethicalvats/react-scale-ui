@@ -1,0 +1,1 @@
+export const ADD_USER = 'react-scale-ui/ADD_USER'
