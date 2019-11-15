@@ -5,3 +5,14 @@ nav ul{
 li .active{
     font-weight: bold;
 }
+
+.item-enter {
+    opacity: 0;
+  }
+  .item-enter-active {
+    opacity: 1;
+    transition: opacity 450ms ease-in;
+  }
+  .item-exit {
+    opacity: 0;
+  }

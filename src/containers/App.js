@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import {
+  TransitionGroup,
+  CSSTransition
+} from "react-transition-group";
+
 import NotFoundPage from '../containers/NotFoundPage';
 import SignUpPage from './SignUpPage';
 import Sidebar from "../components/Sidebar";
@@ -19,6 +24,7 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
+  let location = useLocation()
   return (
     <AppWrapper>
       <Helmet
@@ -27,21 +33,37 @@ function App() {
       >
         <meta name="description" content="Frontend Engineer, Technical Task" />
       </Helmet>
-      <Router>
         <Header />
       <Sidebar />
-      <Switch>
-        <Route exact path="/" render={()=>(
-          <Redirect to="/signup" />
-        )} />
+      <TransitionGroup>
+        <CSSTransition 
+          key={location.key}
+          timeout={300}
+          classNames="item"
+        >
+        <Switch location={location}>
         <Route exact path="/signup" component={SignUpPage} />
         <Route exact path="/users" component={UserListPage} />
         <Route exact path="/dashboard" component={DashboardPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      </Router>
+        </CSSTransition>
+      </TransitionGroup>
     </AppWrapper>
   );
 }
 
-export default App;
+export default function() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/signup" />
+        </Route>
+        <Route path="*">
+          <App />
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
