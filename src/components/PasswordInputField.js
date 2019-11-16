@@ -27,7 +27,7 @@ const PasswordInputField = ({ onChangeEvt, className }) => {
     }
 
     return (
-        <div className={className}>
+        <>
             <TextInputField
                 label="Password"
                 type="password"
@@ -36,7 +36,7 @@ const PasswordInputField = ({ onChangeEvt, className }) => {
                 label="Confirm Password"
                 type="password"
                 onChangeEvt={res => handleChange(res, true)} isValidFromParent={isValid} />
-        </div>
+        </>
     )
 }
 

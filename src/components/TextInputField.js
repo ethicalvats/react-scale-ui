@@ -47,13 +47,44 @@ const TextInputField = ({ label, type, onChangeEvt, className, isValidFromParent
     }
 
     return (
-        <fieldset className={className}>
-            <label>{label}</label>
-            <input className={isValid ? null : 'error'} type={type} onChange={e => handleTextChange(e)} />
-        </fieldset>
+        <div className={isValid? className: `error ${className}` }>
+            <div class="textinputfield-label">{label}</div>
+            <div>
+            <input type={type} onChange={e => handleTextChange(e)} />
+            </div>
+        </div>
     )
 }
 
 export default styled(TextInputField)`
-
+    margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    div{
+        flex:1
+    }
+    .textinputfield-label{
+        color: #666;
+    }
+    input{
+        border:0
+        border-bottom: 1px solid #ddd;
+        font-size: 0.76em
+        line-height:1    border: 1px solid #ddd;
+        font-size: 0.76em;
+        line-height: 1;
+        width: 100%;
+        padding: 4px;
+        color: #999;
+        box-sizing: border-box;
+        :focus{
+            outline: 0;
+        }
+    }
+    &.error input{
+        border-color: #bf1a1a
+      }
+      &.error .textinputfield-label{
+          color:#bf1a1a
+      }
 `

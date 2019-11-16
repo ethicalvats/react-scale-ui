@@ -10,6 +10,10 @@ export default defineMessages({
   },
   error: {
     id: `${scope}.error`,
-    defaultMessage: 'There is an error! \nPlease check email format is valid also password and confirm password should match.',
+    defaultMessage: '👊🏼 Fix errors below!',
+  },
+  instruction: {
+    id: `${scope}.instruction`,
+    defaultMessage: '💁🏼‍ Fill the below form!',
   },
 });

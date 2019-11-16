@@ -1,3 +1,6 @@
+body{
+  background: #f9f9f9
+}
 nav ul{
     list-style: none;
     padding:0;
@@ -16,6 +19,19 @@ li .active{
   .item-exit {
     opacity: 0;
   }
-  input.error{
-    border-color: red
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .pair_programming{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    right: 0;
   }
