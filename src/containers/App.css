@@ -16,3 +16,6 @@ li .active{
   .item-exit {
     opacity: 0;
   }
+  input.error{
+    border-color: red
+  }
