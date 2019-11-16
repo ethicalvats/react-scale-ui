@@ -8,4 +8,8 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'User Listing',
   },
+  empty: {
+    id: `${scope}.empty`,
+    defaultMessage: 'There are no users!',
+  },
 });

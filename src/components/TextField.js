@@ -3,13 +3,19 @@ import styled from "styled-components";
 
 const TextField = ({ label, value, className }) => {
     return (
-        <fieldset className={className}>
-            <label>{label}</label>
+        <div className={className}>
+            <div className="textfield-label">{label}</div>
             <div>{value}</div>
-        </fieldset>
+        </div>
     )
 }
 
 export default styled(TextField)`
-
+margin: 12px 0;
+display: flex;
+justify-content: space-between;
+div{
+    flex:1;
+    color: #666;
+}
 `

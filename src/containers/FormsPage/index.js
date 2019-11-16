@@ -74,9 +74,6 @@ class FormsPage extends React.Component {
                     </fieldset>
                 </div>
             </form>
-            <div className="pair_programming">
-                <img src="pair_programming.svg" />
-            </div>
         </div>
     }
 }
