@@ -3,8 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import { Helmet } from "react-helmet";
 import H1 from "../../components/H1";
+import { connect } from 'react-redux'
 
-export default function DashboardPage() {
+const DashboardPage = ({users}) => {
   return (
     <article>
       <Helmet>
@@ -13,6 +14,15 @@ export default function DashboardPage() {
       <H1>
         <FormattedMessage {...messages.header} />
       </H1>
+      <label>Total number of users: {users.length}</label>
     </article>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+      users: state.global
+  }
+}
+
+export default connect(mapStateToProps)(DashboardPage)

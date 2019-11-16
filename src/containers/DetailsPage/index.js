@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from 'react-redux'
 import { addUser } from "./actions";
 import { withRouter } from "react-router";
+import TextField from "../../components/TextField";
 
 class DetailsPage extends React.Component{
     state
@@ -21,18 +22,15 @@ class DetailsPage extends React.Component{
         const { email, username, password} = this.state
         return <div>
             <div className='show-form-data'>
-                <fieldset>
-                    <label>Username</label>
-                    <div>{username}</div>
-                </fieldset>
-                <fieldset>
-                    <label>Email</label>
-                    <div>{email}</div>
-                </fieldset>
-                <fieldset>
-                    <label>Password</label>
-                    <div>{password}</div>
-                </fieldset>
+                <TextField 
+                    label="Username"
+                    value={username} />
+                <TextField 
+                    label="Email"
+                    value={email} />
+                <TextField 
+                    label="Password"
+                    value={password} />
                 <fieldset>
                     <input type="button" value="Submit" onClick={() => this.handleSubmit()} />
                 </fieldset>

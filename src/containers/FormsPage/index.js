@@ -18,9 +18,8 @@ class FormsPage extends React.Component {
     }
 
     handleTextChange = (res, label) => {
-        console.log(res, label)
         let values = {}
-        values[label] = res.value
+        values[label] = res.val
         values['isValid'] = res.isValid
         this.checkDisabled(res.isValid)
         this.setState({ ...values })
