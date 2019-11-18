@@ -17,6 +17,7 @@ const PasswordInputField = ({ onChangeEvt, className }) => {
     }, [isValid])
 
     const handleChange = (res, confirm) => {
+        console.log(res, confirm)
         if(confirm){
             if(password !== "") setIsvalid(res.val === password)
             setCpassword(res.val)
@@ -24,6 +25,19 @@ const PasswordInputField = ({ onChangeEvt, className }) => {
             if(cpassword !== "") setIsvalid(res.val === cpassword)
             setPassword(res.val)
         }
+
+        if(password === cpassword){
+            onChangeEvt({
+                val: password,
+                isValid: true
+            })
+        }else{
+            onChangeEvt({
+                val: password,
+                isValid: false
+            })
+        }
+
     }
 
     return (

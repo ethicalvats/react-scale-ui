@@ -13,7 +13,10 @@ class FormsPage extends React.Component {
             username: '',
             email: '',
             password: '',
-            isValid: true,
+            isUsernameValid: false,
+            isEmailValid: false,
+            isPasswordValid: false,
+            formIsValid: true,
             isDisabled: true
         }
     }
@@ -21,27 +24,36 @@ class FormsPage extends React.Component {
     handleTextChange = (res, label) => {
         let values = {}
         values[label] = res.val
-        values['isValid'] = res.isValid
-        this.checkDisabled(res.isValid)
+        this.checkFormisValidAndDisabled(res.isValid, label)
         this.setState({ ...values })
     }
 
-    checkDisabled = (valid) => {
-        if (!valid) {
+    checkFormisValidAndDisabled = (valid, label) =>{
+        console.log(this.state, label, valid)
+        if(label==='username'){
             this.setState({
+                isUsernameValid: valid
+            })
+        }else if(label === 'email'){
+            this.setState({
+                isEmailValid: valid
+            })
+        }else if(label === 'password'){
+            this.setState({
+                isPasswordValid: valid
+            })
+        }
+
+        if(this.state.isUsernameValid && this.state.isEmailValid && this.state.isPasswordValid){
+            this.setState({
+                formIsValid: true,
+                isDisabled: false
+            })
+        }else{
+            this.setState({
+                formIsValid: false,
                 isDisabled: true
             })
-        } else {
-            const { email, password, username } = this.state
-            if (email === "" || password === "" || username === "") {
-                this.setState({
-                    isDisabled: true
-                })
-            } else {
-                this.setState({
-                    isDisabled: false
-                })
-            }
         }
     }
 
@@ -52,11 +64,11 @@ class FormsPage extends React.Component {
     }
 
     render() {
-        const { isValid, isDisabled } = this.state
+        const { formIsValid, isDisabled } = this.state
         return <div className={this.props.className}>
             <form onSubmit={(e) => this.handleSubmit(e)}>
                 <div className="form-header">
-                    {isValid ? <div className="form-message"><FormattedMessage {...messages.instruction} /></div> : <div className="form-message--error"><FormattedMessage {...messages.error} /></div>}
+                    {formIsValid ? <div className="form-message"><FormattedMessage {...messages.instruction} /></div> : <div className="form-message--error"><FormattedMessage {...messages.error} /></div>}
                 </div>
                 <TextInputField
                     label="Username"

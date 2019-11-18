@@ -22,17 +22,23 @@ const TextInputField = ({ label, type, onChangeEvt, className, isValidFromParent
     }, [isValid])
 
     const validateIt = (label, value) => {
+        let check
         switch (label) {
             case "Email":
                 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
                     setIsValid(true)
+                    check = true
                 } else {
                     setIsValid(false)
+                    check = false
                 }
                 break;
             default:
+                // setIsValid(true)
+                check = true
                 break;
         }
+        return check
     }
 
     const handleTextChange = e => {
@@ -41,13 +47,13 @@ const TextInputField = ({ label, type, onChangeEvt, className, isValidFromParent
         validateIt(label, val)
         return onChangeEvt({
             val,
-            isValid
+            isValid: validateIt(label, val)
         })
     }
 
     return (
         <div className={isValid? className: `error ${className}` }>
-            <div className="textinputfield-label">{label}</div>
+            <div className="textinputfield-label">{label} *</div>
             <div>
             <input type={type} onChange={e => handleTextChange(e)} />
             </div>

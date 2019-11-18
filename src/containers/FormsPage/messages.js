@@ -10,7 +10,7 @@ export default defineMessages({
   },
   error: {
     id: `${scope}.error`,
-    defaultMessage: '👊🏼 Fix errors below!',
+    defaultMessage: '👊🏼 Fix errors below! (All fields are mandatory)',
   },
   instruction: {
     id: `${scope}.instruction`,
