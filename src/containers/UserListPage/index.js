@@ -18,7 +18,7 @@ const UserListPage = ({ users, className }) => {
       </H1>
       <div>
         {users.length > 0? users.map((u, i) => <UserList key={i} username={u.username} email={u.email} />): <div className="empty-users">
-          <img src="avatar.png" />
+          <img src="avatar.png" alt="" />
           <div><FormattedMessage {...messages.empty} /></div>
         </div>}
       </div>

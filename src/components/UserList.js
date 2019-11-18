@@ -5,7 +5,7 @@ const UserList = ({ username, email, className }) => {
     return (
         <div className={className}>
             <div>
-                <img src="avatar.png" />
+                <img src="avatar.png" alt="" />
             </div>
             <div>
                 <label>{username}</label>

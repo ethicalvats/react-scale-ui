@@ -31,7 +31,6 @@ const TextInputField = ({ label, type, onChangeEvt, className, isValidFromParent
                 }
                 break;
             default:
-                setIsValid(true)
                 break;
         }
     }
@@ -48,7 +47,7 @@ const TextInputField = ({ label, type, onChangeEvt, className, isValidFromParent
 
     return (
         <div className={isValid? className: `error ${className}` }>
-            <div class="textinputfield-label">{label}</div>
+            <div className="textinputfield-label">{label}</div>
             <div>
             <input type={type} onChange={e => handleTextChange(e)} />
             </div>

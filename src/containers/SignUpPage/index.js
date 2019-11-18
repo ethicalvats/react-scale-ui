@@ -23,7 +23,7 @@ export default function SignUpPage() {
       </H1>
       {nextStep ? <DetailsPage data={{ ...formData }} /> : <FormsPage onNext={(values) => handleNext(values)} />}
       <div className="pair_programming">
-        <img src="pair_programming.svg" />
+        <img src="pair_programming.svg" alt="" />
       </div>
     </article>
   );
